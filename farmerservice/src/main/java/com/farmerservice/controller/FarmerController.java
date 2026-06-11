@@ -13,7 +13,7 @@ import java.util.List;
 // http://localhost:9191/api/farmers
 public class FarmerController {
 
-    private FarmerService farmerService;
+    private final FarmerService farmerService;
 
     public FarmerController(FarmerService farmerService) {
         this.farmerService = farmerService;
@@ -29,8 +29,8 @@ public class FarmerController {
     // http://localhost:9191/api/farmers/1
     @GetMapping(name = "get_farmer_by_id", value = "/{id}")
     public ResponseEntity<FarmerDTO> getFarmerById(@PathVariable Long id) {
-        FarmerDTO farmerDTO = farmerService.getFarmerById(id);
-        return ResponseEntity.ok(farmerDTO);
+        FarmerDTO farmers = farmerService.getFarmerById(id);
+        return ResponseEntity.ok(farmers);
     }
 
     // http://localhost:9191/api/farmers/all
